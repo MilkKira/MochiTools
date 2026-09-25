@@ -46,13 +46,13 @@ namespace MochiTools
     
     public static ConfigEntry<KeyboardShortcut> IgnoreFaultToggle { get; private set; }
     
-    public static ConfigEntry<bool> AllowLooting { get; private set; }
-    
-    public static ConfigEntry<bool> AllowLootingRemoteInteract { get; private set; }
-    
-    public static ConfigEntry<bool> AllowLootingBlockItemsInsideSecureContainer { get; private set; }
-    
-    public static ConfigEntry<int> TotalWeightReductionPercentage { get; private set; }
+    // public static ConfigEntry<bool> AllowLooting { get; private set; }
+    //
+    // public static ConfigEntry<bool> AllowLootingRemoteInteract { get; private set; }
+    //
+    // public static ConfigEntry<bool> AllowLootingBlockItemsInsideSecureContainer { get; private set; }
+    //
+    // public static ConfigEntry<int> TotalWeightReductionPercentage { get; private set; }
     private void Awake()
 		{
 			NekoPlugin.Log = base.Logger;
@@ -69,14 +69,11 @@ namespace MochiTools
 			NekoPlugin.UnlimitedAmmoToggle = base.Config.Bind<KeyboardShortcut>("武器系统", "UnlimitedAmmoToggle", new KeyboardShortcut(KeyCode.F9, Array.Empty<KeyCode>()), "无穷子弹切换键");
 			NekoPlugin.IgnoreFault = base.Config.Bind<bool>("武器系统", "IgnoreFault", false, "无视故障");
 			NekoPlugin.IgnoreFaultToggle = base.Config.Bind<KeyboardShortcut>("武器系统", "IgnoreFaultToggle", new KeyboardShortcut(KeyCode.F10, Array.Empty<KeyCode>()), "无视故障切换键");
-			NekoPlugin.AllowLooting = base.Config.Bind<bool>("交互系统", "AllowLooting", false, "允许掠夺原本不可掠夺的物品");
-			NekoPlugin.AllowLootingRemoteInteract = base.Config.Bind<bool>("交互系统", "AllowLootingRemoteInteract", false, "允许远程交互并绕过观察状态限制");
-			NekoPlugin.AllowLootingBlockItemsInsideSecureContainer = base.Config.Bind<bool>("交互系统", "AllowLootingBlockItemsInsideSecureContainer", false, "阻止从他人的安全箱或特殊槽位掠夺物品");
 			NekoPlugin.IsInfiniteStamina = base.Config.Bind<bool>("人物系统", "IsInfiniteStamina", true, "无限体力以及手部体力");
 			NekoPlugin.InfiniteEnergy = base.Config.Bind<bool>("人物系统", "InfiniteEnergy", false, "满能量");
 			NekoPlugin.InfiniteHydration = base.Config.Bind<bool>("人物系统", "InfiniteHydration", false, "满水分");
 			NekoPlugin.RepairDurabilityRequestToggle = base.Config.Bind<KeyboardShortcut>("库存系统", "RepairDurabilityRequest", new KeyboardShortcut(KeyCode.F11, Array.Empty<KeyCode>()), "修复武器耐久");
-			NekoPlugin.TotalWeightReductionPercentage = base.Config.Bind<int>("库存系统", "TotalWeightReductionPercentage", 100, new ConfigDescription("用于减少物品总重量的百分比", new AcceptableValueRange<int>(0, 100), Array.Empty<object>()));
+			// NekoPlugin.TotalWeightReductionPercentage = base.Config.Bind<int>("库存系统", "TotalWeightReductionPercentage", 100, new ConfigDescription("用于减少物品总重量的百分比", new AcceptableValueRange<int>(0, 100), Array.Empty<object>()));
 			Harmony harmony = new Harmony("com.milk.patch");
 			harmony.PatchAll();
 			NekoPlugin.Log.LogInfo("Nyan Nyan Nyan ~");
